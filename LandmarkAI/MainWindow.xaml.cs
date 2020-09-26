@@ -1,5 +1,6 @@
 ﻿using LandmarkAI.Classes;
 using Microsoft.Win32;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -62,6 +63,7 @@ namespace LandmarkAI
                     var response = await client.PostAsync(url, content);
 
                     string json = await response.Content.ReadAsStringAsync();
+                    List<Prediction> predictions = JsonConvert.DeserializeObject<CustomVision>(json).predictions;
                 }
             }
         }

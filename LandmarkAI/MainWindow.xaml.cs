@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using LandmarkAI.Classes;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -59,6 +60,8 @@ namespace LandmarkAI
                 {
                     content.Headers.ContentType = new MediaTypeHeaderValue(contentType);
                     var response = await client.PostAsync(url, content);
+
+                    string json = await response.Content.ReadAsStringAsync();
                 }
             }
         }

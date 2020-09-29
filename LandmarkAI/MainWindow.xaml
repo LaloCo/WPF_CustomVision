@@ -7,6 +7,10 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
         <StackPanel Margin="10">
             <Button Content="Select image"
                     HorizontalAlignment="Center"
@@ -16,5 +20,20 @@
                    Stretch="Uniform"
                    Margin="0,10,0,0"/>
         </StackPanel>
+        <ListView x:Name="predictionsListView"
+                  Grid.Column="1"
+                  Width="200"
+                  VerticalAlignment="Center">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Tag"
+                                    Width="100"
+                                    DisplayMemberBinding="{Binding tagName}"/>
+                    <GridViewColumn Header="Probability"
+                                    Width="100"
+                                    DisplayMemberBinding="{Binding Path=probability, StringFormat=P2}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Window>
